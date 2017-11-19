@@ -11,7 +11,7 @@ module.exports = class World {
     }
 
     step() {
-        const newCells = this.cells.map(cell => {
+        this.cells = this.cells.map(cell => {
             let neighbors = [
                 this.getCell(cell.posx - 1, cell.posy - 1),
                 this.getCell(cell.posx, cell.posy - 1),
@@ -40,7 +40,6 @@ module.exports = class World {
             }
             return newCell;
         });
-        this.cells = newCells;
     }
 
     getCell(x,y) {
