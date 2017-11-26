@@ -3,6 +3,9 @@ module.exports = {
         "es6": true,
         "node": true
     },
+    "plugins": [
+        "chai-friendly"
+    ],
     "extends": "eslint:recommended",
     "rules": {
         "accessor-pairs": "error",
@@ -186,7 +189,8 @@ module.exports = {
         "no-underscore-dangle": "error",
         "no-unmodified-loop-condition": "error",
         "no-unneeded-ternary": "error",
-        "no-unused-expressions": "error",
+        "no-unused-expressions": 0,
+        "chai-friendly/no-unused-expressions": 2,
         "no-use-before-define": "error",
         "no-useless-call": "error",
         "no-useless-computed-key": "error",

@@ -7,7 +7,7 @@ module.exports = class World {
     }
 
     spawnCell(x, y) {
-        this.getCell(x, y).status = true;
+        this.getCell(x, y).alive = true;
     }
 
     step() {
@@ -21,21 +21,21 @@ module.exports = class World {
                 this.getCell(cell.posx - 1, cell.posy + 1),
                 this.getCell(cell.posx, cell.posy + 1),
                 this.getCell(cell.posx + 1, cell.posy + 1)];
-            const numberNeighbors = neighbors.reduce((prev, current) => prev + ((current && current.status) ? 1 : 0), 0);
+            const numberNeighbors = neighbors.reduce((prev, current) => prev + ((current && current.alive) ? 1 : 0), 0);
             const newCell = new Cell(cell.posx, cell.posy, false);
-            if (cell.status) {
+            if (cell.alive) {
                 if (numberNeighbors <= 1) {
-                    newCell.status = false;
+                    newCell.alive = false;
                 }
                 if (numberNeighbors > 3) {
-                    newCell.status = false;
+                    newCell.alive = false;
                 }
                 if (numberNeighbors === 2 || numberNeighbors === 3) {
-                    newCell.status = true;
+                    newCell.alive = true;
                 }
             } else {
                 if (numberNeighbors === 3) {
-                    newCell.status = true;
+                    newCell.alive = true;
                 }
             }
             return newCell;
